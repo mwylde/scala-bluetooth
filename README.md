@@ -29,7 +29,7 @@ Bluetooth [is complicated](https://learn.adafruit.com/introduction-to-bluetooth-
 
     Range(0, 100).foreach((i) => {
       val color = (Random.nextInt(255), Random.nextInt(255), Random.nextInt(255))
-      val message= MagicLight.color(Color(color._1, color._2, color._3))
+      val message = List(0x56, color._1, color._2, color._3, 0x00, 0xf0, 0xaa)
       lights.toParArray.foreach(light => {
         light.getCharForUUID("0000ffe9")
           .foreach((char) => char.writeValue(message.map(_.toByte)))
@@ -47,6 +47,12 @@ See [here](https://github.com/mwylde/scala-bluetooth/tree/master/examples) for
 more examples.
 
 ### Setup
+
+Releases are hosted on maven central. To add to your build:
+
+```scala
+libraryDependencies += "com.micahw" %% "scala-bluetooth" % "0.0.1"
+```
 
 Unfortunately, support for BLE over DBus is still experimental
 in bluez, so you will need to run the daemon in experimental mode:
