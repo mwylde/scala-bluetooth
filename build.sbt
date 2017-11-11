@@ -2,14 +2,14 @@ organization := "com.micahw"
 
 name := "scala-bluetooth"
 
-version := "0.0.1"
+version := "0.0.2"
 
-scalaVersion := "2.11.8"
+crossScalaVersions := Seq("2.11.8", "2.12.4")
 
 resolvers += "Typesafe Releases" at "https://repo.typesafe.com/typesafe/maven-releases/"
 
-libraryDependencies += "ch.qos.logback" %  "logback-classic" % "1.1.7"
-libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.4.0"
+libraryDependencies += "ch.qos.logback" %  "logback-classic" % "1.2.3"
+libraryDependencies += "com.typesafe.scala-logging" %% "scala-logging" % "3.7.2"
 
 unmanagedJars in Compile += file("/usr/share/java/dbus-2.8.jar")
 
